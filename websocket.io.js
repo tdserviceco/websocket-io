@@ -1,6 +1,3 @@
-const io = require('socket.io')(http, {
-  cookie: true
-});
 
 const express = require('express')
 const app = express();
