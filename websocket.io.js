@@ -52,8 +52,8 @@ app.get('/api/countries', (req, res) => {
     .finally(() => client.close());
 });
 
-app.get('/api/players', (req, res) => {
-  console.log('OH BOY!!!');
+app.get('/api/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
 })
 
 app.get('/api/players', (req, res) => {
