@@ -1,18 +1,19 @@
 require('dotenv').config()
-
 const express = require('express');
 const app = express();
+var cors = require('cors')
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
   cookie: true
 });
-const MongoClient = require('mongodb').MongoClient;
 
-// Connection URL
-const url = process.env.MONGODB;
-const dbName = 'xboxfighters';
-// Use connect method to connect to the Server
+this.state = {
+  Countries: __dirname + "/json/Countries.json",
+  Home: __dirname + "/index.html",
+  Players: __dirname + "/json/Countries.json"
+}
 
+const {Countries,Home, Players} = this.state;
 
 io.on('connection', (socket) => {
   console.log('Connected')
@@ -31,51 +32,25 @@ io.on('connection', (socket) => {
 
 })
 
-app.use(express.static('public'))
+app.use(cors(), express.static('public'))
 
 // API
 
 app.get('/api/countries', (req, res) => {
-  var url = process.env.MONGODB;
-  const client = new MongoClient(url, { useUnifiedTopology: true }); // { useUnifiedTopology: true } removes connection warnings;
-  const dbName = "xboxfighters";
-  client
-    .connect()
-    .then(
-      client =>
-        client
-          .db(dbName).
-          collection("Countries").find({})
-          .toArray() // Returns a promise that will resolve to the list of the collections
-    )
-    .then(cols => res.json(cols))
-    .finally(() => client.close());
+  res.sendFile( Countries );
 });
 
 app.get('/api/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile( Home );
 })
 
 app.get('/api/players', (req, res) => {
-  var url= "mongodb+srv://xboxfighters:xboxfighters2020@cluster0.vmbtm.mongodb.net/xboxfighters";
+  res.sendFile( Players );
   
-  const client = new MongoClient(url, { useUnifiedTopology: true }); // { useUnifiedTopology: true } removes connection warnings;
-  const dbName = "xboxfighters";
-  client
-    .connect()
-    .then(
-      client =>
-        client
-          .db(dbName).
-          collection("Players").find({})
-          .toArray() // Returns a promise that will resolve to the list of the collections
-    )
-    .then(cols => res.json(cols))
-    .finally(() => client.close());
 });
 
 
-app.post('/api/players', (req, res) => {
+app.get('/api/countries', (req, res) => {
 
 })
 
