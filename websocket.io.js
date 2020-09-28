@@ -52,10 +52,13 @@ app.get('/api/countries', (req, res) => {
     .finally(() => client.close());
 });
 
-
+app.get('/api/players', (req, res) => {
+  console.log('OH BOY!!!');
+})
 
 app.get('/api/players', (req, res) => {
-  var url = process.env.MONGODB;
+  var url= "mongodb+srv://xboxfighters:xboxfighters2020@cluster0.vmbtm.mongodb.net/xboxfighters";
+  
   const client = new MongoClient(url, { useUnifiedTopology: true }); // { useUnifiedTopology: true } removes connection warnings;
   const dbName = "xboxfighters";
   client
