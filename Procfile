@@ -1,1 +1,1 @@
-web: node websocket.io.js
+web: npm i && node websocket.io.js
