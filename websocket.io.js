@@ -10,7 +10,7 @@ const io = require('socket.io')(http, {
 this.state = {
   Countries: __dirname + "/json/Countries.json",
   Home: __dirname + "/index.html",
-  Players: __dirname + "/json/Countries.json"
+  Players: __dirname + "/json/Players.json"
 }
 
 const {Countries,Home, Players} = this.state;
