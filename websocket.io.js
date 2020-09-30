@@ -52,7 +52,7 @@ app.get('/api/players', (req, res) => {
 
 
 app.get('/api/player/?:player&:code', (req, res) => {
-  console.log(req.params) 
+  console.log("result: " +req.params)
   res.send(req.params)
 })
 
