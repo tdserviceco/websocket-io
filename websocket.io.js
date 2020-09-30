@@ -15,6 +15,31 @@ this.state = {
 
 const {Countries,Home, Players} = this.state;
 
+app.use(cors(), express.static('public'))
+
+// API
+
+app.get('/api/countries', (req, res) => {
+  res.sendFile( Countries );
+});
+
+app.get('/api/', (req, res) => {
+  res.sendFile( Home );
+})
+
+app.get('/api/players', (req, res) => {
+  res.sendFile( Players );
+});
+
+app.get('/api/player/id:&:player&:code', (req, res) => {
+  console.log("result: " +req.params)
+  res.send(req.params)
+})
+
+http.listen(process.env.PORT || 3000, () => {
+  console.log('server is running on ' + process.env.PORT)
+});
+
 io.on('connection', (socket) => {
   console.log('Connected')
   socket.on('disconnect', (reason) => {
@@ -25,37 +50,9 @@ io.on('connection', (socket) => {
     }
     console.log('user disconnected');
   });
-  socket.on('server', (data) => {
+  socket.on('server', (data) => { 
     console.log(data)
-    socket.send('client', { value: 'Hi Client!' })
+    socket.emit('client', { value: 'Hi Client!' })
   })
 
 })
-
-app.use(cors(), express.static('public'))
-
-// API
-
-app.get('/api/countries', (req, res) => {
-  res.sendFile( Countries );
-});
-
-
-app.get('/api/', (req, res) => {
-  res.sendFile( Home );
-})
-
-app.get('/api/players', (req, res) => {
-  res.sendFile( Players );
-  
-});
-
-
-app.get('/api/player/?:player&:code', (req, res) => {
-  console.log("result: " +req.params)
-  res.send(req.params)
-})
-
-http.listen(process.env.PORT || 3000, () => {
-  console.log('server is running on ' + process.env.PORT)
-});
