@@ -1,84 +1,82 @@
 [
   {
-    "Name": "Virobloc",
-    "Country": "CAT"
+    "name": "Virobloc",
+    "country": "CAT"
   },
   {
-    "Name": "XbF | Tdserviceco",
-    "Country": "SE"
+    "name": "XbF | Tdserviceco",
+    "country": "SE"
   },
   {
-    "Name": "XbF | KrissrocK",
-    "Country": "US"
+    "name": "XbF | KrissrocK",
+    "country": "US"
   },
   {
-    "Name": "XbF | Omega Mad",
-    "Country": "GB"
+    "name": "XbF | Omega Mad",
+    "country": "GB"
   },
   {
-    "Name": "XbF | LemmyHawkins",
-    "Country": "DE"
+    "name": "XbF | LemmyHawkins",
+    "country": "DE"
   },
   {
-    "Name": "HisNameIsZer0",
-    "Country": "US"
+    "name": "HisNameIsZer0",
+    "country": "US"
   },
   {
-    "Name": "Lith",
-    "Country": "MX"
+    "name": "Lith",
+    "country": "MX"
   },
   {
-    "Name": "DenjinAkira",
-    "Country": "GB"
+    "name": "DenjinAkira",
+    "country": "GB"
   },
   {
-    "Name": "Kusunagi-x",
-    "Country": "GB"
+    "name": "Kusunagi-x",
+    "country": "GB"
   },
   {
-    "Name": "Necroseraph86",
-    "Country": "GB"
+    "name": "Necroseraph86",
+    "country": "GB"
   },
   {
-    "Name": "Ghost Emperor",
-    "Country": "GY"
+    "name": "Ghost Emperor",
+    "country": "GY"
   },
   {
-    "Name": "DugTheFreshest",
-    "Country": "US"
+    "name": "DugTheFreshest",
+    "country": "US"
   },
   {
-    "Name": "Aclpach11",
-    "Country": "MX"
+    "name": "Aclpach11",
+    "country": "MX"
   },
   {
-    "Name": "DawkManX",
-    "Country": "US"
+    "name": "DawkManX",
+    "country": "US"
   },
   {
-    "Name": "DrSmoores",
-    "Country": "US"
+    "name": "DrSmoores",
+    "country": "US"
   },
   {
-    "Name": "WarriorShift",
-    "Country": "CA"
+    "name": "WarriorShift",
+    "country": "CA"
   },
   {
-    "Name": "Verendum",
-    "Country": "AU"
+    "name": "Verendum",
+    "country": "AU"
   },
   {
-    "Name": " T_Hawk",
-    "Country": "US"
+    "name": " T_Hawk",
+    "country": "US"
   },
   {
-    "Name": "Lekkerluke",
-    "Country": "NL"
+    "name": "Lekkerluke",
+    "country": "NL"
   },
   {
-    "Name": "ThrustyZol",
-    "Country": "US"
-  }
-  
-  
+    "name": "ThrustyZol",
+    "country": "US"
+  } 
 ]

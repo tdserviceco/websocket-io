@@ -1,44 +1,44 @@
   [
     {
-      "Countries": {
-        "Australia": {
+      "countries": {
+        "australia": {
           "code": "AU",
           "name": "Australia"
         },
         
-        "Sweden": {
+        "sweden": {
           "code": "SE",
           "name": "Sweden"
         },
-        "Usa": {
+        "usa": {
           "code": "US",
           "name": "Usa"
         },
-        "Canada" : {
+        "canada" : {
           "code" : "CA",
           "name" : "Canada"
         },
-        "Mexico" : {
+        "mexico" : {
           "code" : "MX",
           "name" : "Mexico"
         },
-        "Germany" : {
+        "germany" : {
           "code" : "DE",
           "name" : "Germany"
         },
-        "Japan" : {
+        "japan" : {
           "code" : "JP",
           "name" : "Japan"
         },
-        "GreatBritain" : {
+        "greatBritain" : {
           "code" : "GB",
           "name" : "Great Britain"
         },
-        "Polan" : {
+        "polan" : {
           "code" : "PL",
           "name" : "Poland"
         },
-        "Guyana" : {
+        "guyana" : {
           "code" : "GY",
           "name" : "Guyana"
         }
