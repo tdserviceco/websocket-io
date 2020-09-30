@@ -31,7 +31,7 @@ app.get('/api/players', (req, res) => {
   res.sendFile( Players );
 });
 
-app.get('/api/player/id:&:player&:code', (req, res) => {
+app.get('/api/player/?:id&:player&:code', (req, res) => {
   console.log("result: " +req.params)
   res.send(req.params)
 })
