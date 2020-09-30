@@ -40,6 +40,7 @@ app.get('/api/countries', (req, res) => {
   res.sendFile( Countries );
 });
 
+
 app.get('/api/', (req, res) => {
   res.sendFile( Home );
 })
@@ -50,8 +51,9 @@ app.get('/api/players', (req, res) => {
 });
 
 
-app.get('/api/countries', (req, res) => {
-
+app.get('/api/player/?:player&:code', (req, res) => {
+  console.log(req.params) 
+  res.send(req.params)
 })
 
 http.listen(process.env.PORT || 3000, () => {
