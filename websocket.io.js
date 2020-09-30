@@ -18,9 +18,12 @@ app.use(cors(), express.static('public'))
 
 // API
 
+app.get('/', (req,res) => {
+  res.send({response: 'Welcome'}).status(200)
+})
+
 app.get('/api/countries', (req, res) => {
   res.sendFile(Countries);
-  res.send({response: 'Countries'}).status(200);
 })
 
 app.get('/api/', (req, res) => {
@@ -29,13 +32,11 @@ app.get('/api/', (req, res) => {
 
 app.get('/api/players', (req, res) => {
   res.sendFile(Players);
-  res.send({response: 'Players'}).status(200);
 })
 
 app.get('/api/player/?:id&:player&:code', (req, res) => {
   console.log("result: " + req.params)
   res.send(req.params)
-  res.send({response: 'Player info'}).status(200);
 })
 
 io.on('connection', (socket) => {
