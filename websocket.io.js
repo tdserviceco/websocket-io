@@ -9,36 +9,34 @@ const io = require('socket.io')(http, {
 
 this.state = {
   Countries: __dirname + "/json/Countries.json",
-  Home: __dirname + "/index.html",
   Players: __dirname + "/json/Players.json"
 }
 
-const {Countries,Home, Players} = this.state;
+const { Countries,Players } = this.state;
 
 app.use(cors(), express.static('public'))
 
 // API
 
 app.get('/api/countries', (req, res) => {
-  res.sendFile( Countries );
-});
+  res.sendFile(Countries);
+  res.send({response: 'Countries'}).status(200);
+})
 
 app.get('/api/', (req, res) => {
-  res.sendFile( Home );
+  res.send({response: 'Yes im still kicking'}).status(200)
 })
 
 app.get('/api/players', (req, res) => {
-  res.sendFile( Players );
-});
-
-app.get('/api/player/?:id&:player&:code', (req, res) => {
-  console.log("result: " +req.params)
-  res.send(req.params)
+  res.sendFile(Players);
+  res.send({response: 'Players'}).status(200);
 })
 
-http.listen(process.env.PORT || 3000, () => {
-  console.log('server is running on ' + process.env.PORT)
-});
+app.get('/api/player/?:id&:player&:code', (req, res) => {
+  console.log("result: " + req.params)
+  res.send(req.params)
+  res.send({response: 'Player info'}).status(200);
+})
 
 io.on('connection', (socket) => {
   console.log('Connected')
@@ -50,9 +48,14 @@ io.on('connection', (socket) => {
     }
     console.log('user disconnected');
   });
-  socket.on('server', (data) => { 
+  socket.on('server', (data) => {
     console.log(data)
-    socket.emit('client', { value: 'Hi Client!' })
+    socket.emit('player', data)
   })
 
 })
+
+
+http.listen(process.env.PORT || 3000, () => {
+  console.log('server is running on ' + process.env.PORT)
+});
