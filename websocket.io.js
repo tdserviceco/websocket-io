@@ -61,13 +61,13 @@ io.on('connection', (socket) => {
     }
   })
 
-  socket.on("playerScore", ({ player, replaceScoreP1, replaceScoreP2 }) => {
+  socket.on("playerScore", ({ player, replaceScoreP1, replaceScoreP2}) => {
     if (player === 'player-1') {
-      io.emit("player1Score", { replaceScoreP1 })
+      io.emit("player1Score", { player, replaceScoreP1 })
     }
 
     if (player === 'player-2') {
-      io.emit("player2Score", { replaceScoreP2 })
+      io.emit("player2Score", { player, replaceScoreP2 })
     }
   })
 
