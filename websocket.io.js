@@ -13,8 +13,8 @@ this.state = {
 }
 
 const { Countries, Players } = this.state;
-
-app.use(cors(), express.static('public'))
+app.options('*', cors()) // include before other routes
+app.use(cors())
 
 // API
 
