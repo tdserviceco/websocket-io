@@ -41,7 +41,11 @@
         "guyana" : {
           "code" : "GY",
           "name" : "Guyana"
-        }
+        },
+        "TrinidadAndTobago" : {
+          "code" : "TT",
+          "name" : "Trinidad and Tobago"
+        },
       }
     }
   ]

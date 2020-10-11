@@ -8,7 +8,7 @@ const io = require('socket.io')(http, {
 });
 
 this.state = {
-  // Countries: __dirname + "/json/Countries.json",
+  Countries: __dirname + "/json/Countries.json",
   Players: __dirname + "/json/Players.json"
 }
 
@@ -22,11 +22,11 @@ app.get('/', (req, res) => {
   res.send({ response: 'Welcome' }).status(200)
 })
 
-/* 
+
 app.get('/api/countries', (req, res) => {
   res.sendFile(Countries);
 })
- */
+
 
 app.get('/api/', (req, res) => {
   res.send({ response: 'Yes im still kicking' }).status(200)
@@ -61,7 +61,7 @@ io.on('connection', (socket) => {
     }
   })
 
-  socket.on("playerScore", ({ player, replaceScoreP1, replaceScoreP2}) => {
+  socket.on("playerScore", ({ player, replaceScoreP1, replaceScoreP2 }) => {
     if (player === 'player-1') {
       io.emit("player1Score", { player, replaceScoreP1 })
     }
@@ -69,6 +69,11 @@ io.on('connection', (socket) => {
     if (player === 'player-2') {
       io.emit("player2Score", { player, replaceScoreP2 })
     }
+  })
+
+  socket.on("swap-place", ( swap ) => {
+    io.emit("swap-place", swap)
+    console.log(swap)
   })
 
   socket.on('disconnect', (reason) => {
