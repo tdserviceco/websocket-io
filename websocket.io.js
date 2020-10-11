@@ -1,4 +1,5 @@
 require('dotenv').config()
+let swap;
 const express = require('express');
 const app = express();
 var cors = require('cors')
@@ -27,7 +28,6 @@ app.get('/api/countries', (req, res) => {
   res.sendFile(Countries);
 })
 
-
 app.get('/api/', (req, res) => {
   res.send({ response: 'Yes im still kicking' }).status(200)
 })
@@ -45,29 +45,29 @@ io.on('connection', (socket) => {
   const { id } = socket.client;
   console.log(`User Connected: ${id}`);
 
-  socket.on("player", ({ id, name, code }) => {
+  socket.on("player", ({ playerID, name, country }) => {
     if (id === 'player-1') {
       io.emit("player1name", { name })
       io.emit("player1country", {
-        country: code + ".png"
+        country: country + ".png"
       })
     }
 
     if (id === 'player-2') {
-      io.emit("player2name", { id, name })
+      io.emit("player2name", { playerID, name })
       io.emit("player2country", {
-        country: code + ".png"
+        country: country + ".png"
       })
     }
   })
 
-  socket.on("playerScore", ({ player, replaceScoreP1, replaceScoreP2 }) => {
+  socket.on("playerScore", ({ player}) => {
     if (player === 'player-1') {
-      io.emit("player1Score", { player, replaceScoreP1 })
+      io.emit("player1Score", { player })
     }
 
     if (player === 'player-2') {
-      io.emit("player2Score", { player, replaceScoreP2 })
+      io.emit("player2Score", { player })
     }
   })
 
