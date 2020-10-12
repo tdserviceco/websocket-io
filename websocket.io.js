@@ -1,5 +1,4 @@
 require('dotenv').config()
-let swap;
 const express = require('express');
 const app = express();
 var cors = require('cors')
@@ -37,7 +36,6 @@ app.get('/api/players', (req, res) => {
 })
 
 app.get('/api/player/?:id&:player&:code', (req, res) => {
-  console.log("result: " + req.params)
   res.send(req.params)
 })
 
@@ -45,35 +43,38 @@ io.on('connection', (socket) => {
   const { id } = socket.client;
   console.log(`User Connected: ${id}`);
 
-  socket.on("player", ({ playerID, name, country }) => {
-    if (id === 'player-1') {
-      io.emit("player1name", { name })
+  socket.on("player", ({ playerID, playerName, playerCountry }) => {
+    if (playerID === 'Player-1') {
+      io.emit("player1name", { playerName })
       io.emit("player1country", {
-        country: country + ".png"
+        country: playerCountry + ".png"
       })
     }
 
-    if (id === 'player-2') {
-      io.emit("player2name", { playerID, name })
+    if (playerID === 'Player-2') {
+      io.emit("player2name", { playerName })
       io.emit("player2country", {
-        country: country + ".png"
+        country: playerCountry + ".png"
       })
     }
   })
 
-  socket.on("playerScore", ({ player}) => {
-    if (player === 'player-1') {
-      io.emit("player1Score", { player })
+
+  socket.on("playerScore", ({ player, scoreP1 ,scoreP2 }) => {
+
+    if (player === 'Player-1') {
+      io.emit("player1Score", { scoreP1 })
+      console.log(scoreP1)
     }
 
-    if (player === 'player-2') {
-      io.emit("player2Score", { player })
+    if (player === 'Player-2') {
+      io.emit("player2Score", { scoreP2 })
+      console.log(scoreP2)
     }
   })
 
-  socket.on("swap-place", ( swap ) => {
+  socket.on("swap-place", (swap) => {
     io.emit("swap-place", swap)
-    console.log(swap)
   })
 
   socket.on('disconnect', (reason) => {
