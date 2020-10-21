@@ -77,6 +77,11 @@ io.on('connection', (socket) => {
     io.emit("swap-place", swap)
   })
 
+  socket.on("last minute", (lastMinute) => {
+    console.log(lastMinute)
+    io.emit("last minute", lastMinute)
+  })
+
   socket.on('disconnect', (reason) => {
     if (reason === 'io server disconnect') {
       // the disconnection was initiated by the server, you need to reconnect manually
