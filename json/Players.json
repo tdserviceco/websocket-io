@@ -57,8 +57,7 @@
   },
   {
     "name": "XbF | DrSmoores",
-    "country": "US",
-    "special-country": "IE"
+    "country": "IE"
   },
   {
     "name": "WarriorShift",
@@ -79,5 +78,9 @@
   {
     "name": "ThrustyZol",
     "country": "US"
-  } 
+  },
+  {
+    "name": "Ölands Öl",
+    "country": "SE"
+  }
 ]

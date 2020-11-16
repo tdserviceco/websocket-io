@@ -46,6 +46,10 @@
           "code" : "TT",
           "name" : "Trinidad and Tobago"
         },
+        "Ireland" : {
+          "code" : "IE",
+          "name" : "Ireland"
+        }
       }
     }
   ]
