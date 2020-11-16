@@ -8,10 +8,10 @@ const io = require('socket.io')(http, {
   cookie: true
 });
 
-// this.state = {
-//   Countries: __dirname + "/json/Countries.json",
-//   Players: __dirname + "/json/Players.json"
-// }
+this.state = {
+  Countries: __dirname + "/json/Countries.json",
+  Players: __dirname + "/json/Players.json"
+}
 
 const { Countries, Players } = this.state;
 app.options('*', cors()) // include before other routes
@@ -24,21 +24,21 @@ app.get('/', (req, res) => {
 })
 
 
-// app.get('/api/countries', (req, res) => {
-//   res.sendFile(Countries);
-// })
+app.get('/api/countries', (req, res) => {
+  res.sendFile(Countries);
+})
 
 app.get('/api/', (req, res) => {
   res.send({ response: 'Yes im still kicking' }).status(200)
 })
 
-// app.get('/api/players', (req, res) => {
-//   res.sendFile(Players);
-// })
+app.get('/api/players', (req, res) => {
+  res.sendFile(Players);
+})
 
-// app.get('/api/player/?:id&:player&:code', (req, res) => {
-//   res.send(req.params)
-// })
+app.get('/api/player/?:id&:player&:code', (req, res) => {
+  res.send(req.params)
+})
 
 io.on('connection', (socket) => {
   const { id } = socket.client;
