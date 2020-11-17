@@ -71,9 +71,12 @@ io.on('connection', (socket) => {
     }
   })
 
+  socket.on("roundText", (roundTextPackage) => {
+    console.log(roundTextPackage)
+    io.emit('roundCallText', roundTextPackage);
+  })
 
   socket.on("playerScore", ({ player, scoreP1, scoreP2 }) => {
-
     if (player === 'Player-1') {
       io.emit("player1Score", { scoreP1 })
       console.log(scoreP1)
