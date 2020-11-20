@@ -92,6 +92,10 @@ io.on('connection', (socket) => {
     io.emit("swap-place", swap)
   })
 
+  socket.on("filter-to-game", (game) => {
+    io.emit('use-filter', game)
+  })
+
   socket.on('disconnect', (reason) => {
     if (reason === 'io server disconnect') {
       // the disconnection was initiated by the server, you need to reconnect manually
