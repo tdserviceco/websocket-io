@@ -8,12 +8,7 @@ const io = require('socket.io')(http, {
   cookie: true
 });
 
-this.state = {
-  Countries: __dirname + "/json/Countries.json",
-  Players: __dirname + "/json/Players.json"
-}
 
-const { Countries, Players } = this.state;
 app.options('*', cors()) // include before other routes
 app.use(cors())
 
@@ -23,21 +18,8 @@ app.get('/', (req, res) => {
   res.send({ response: 'Welcome' }).status(200)
 })
 
-
-app.get('/api/countries', (req, res) => {
-  res.sendFile(Countries);
-})
-
 app.get('/api/', (req, res) => {
   res.send({ response: 'Yes im still kicking' }).status(200)
-})
-
-app.get('/api/players', (req, res) => {
-  res.sendFile(Players);
-})
-
-app.get('/api/player/?:id&:player&:code', (req, res) => {
-  res.send(req.params)
 })
 
 io.on('connection', (socket) => {
@@ -45,6 +27,7 @@ io.on('connection', (socket) => {
   console.log(`User Connected: ${id}`);
 
   socket.on("player", (player) => {
+    console.log(player)
     if (player.playerID === 'Player-1') {
       io.emit("player1name", player.name)
     }
