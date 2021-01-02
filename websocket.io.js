@@ -27,26 +27,25 @@ io.on('connection', (socket) => {
   console.log(`User Connected: ${id}`);
 
   socket.on("player", (player) => {
-    console.log(player)
-    if (player.playerID === 'Player-1') {
+    console.log("player", player)
+    if (player.playerID === 'player-1') {
       io.emit("player1name", player.name)
     }
 
-    if (player.playerID === 'Player-2') {
+    if (player.playerID === 'player-2') {
       io.emit("player2name", player.name)
     }
   })
 
   socket.on("player-country", (player) => {
-    
-    if (player.playerID === 'Player-1') {
+    if (player.playerID === 'player-1') {
 
       getCountryFlag(player.country).then(res => {
         io.emit("player1country", res.data.flag)
       }).catch(err => console.error(err));
 
     }
-    if (player.playerID === 'Player-2') {
+    if (player.playerID === 'player-2') {
       getCountryFlag(player.country).then(res => {
         io.emit("player2country", res.data.flag)
       }).catch(err => console.error(err));
@@ -97,5 +96,5 @@ http.listen(process.env.PORT || 3000, () => {
 
 getCountryFlag = async (countryCode) => {
   const url = await axios.get(`https://restcountries.eu/rest/v2/alpha/${countryCode}`);
-  return url;
+  return await url;
 }
