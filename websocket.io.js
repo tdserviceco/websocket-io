@@ -27,7 +27,6 @@ io.on('connection', (socket) => {
   console.log(`User Connected: ${id}`);
 
   socket.on("player", (player) => {
-    console.log(player)
     if (player.playerID === 'Player-1') {
       io.emit("player1name", player.name)
     }
@@ -38,36 +37,43 @@ io.on('connection', (socket) => {
   })
 
   socket.on("player-country", (player) => {
-    
+
     if (player.playerID === 'Player-1') {
-
-      getCountryFlag(player.country).then(res => {
-        io.emit("player1country", res.data.flag)
-      }).catch(err => console.error(err));
-
+      if (player.country === 'Player-1') {
+        io.emit("player1country", 'Player-1')
+      }
+      else {
+        getCountryFlag(player.country).then(res => {
+          io.emit("player1country", res.data.flag)
+        }).catch(err => console.error(err));
+      }
     }
-    if (player.playerID === 'Player-2') {
-      getCountryFlag(player.country).then(res => {
-        io.emit("player2country", res.data.flag)
-      }).catch(err => console.error(err));
 
+    if (player.playerID === 'Player-2') {
+      if (player.country === 'Player-2') {
+        io.emit("player2country", 'Player-2')
+      }
+      else {
+        getCountryFlag(player.country).then(res => {
+          io.emit("player2country", res.data.flag)
+        }).catch(err => console.error(err));
+      }
     }
   })
 
   socket.on("roundText", (roundTextPackage) => {
-    console.log(roundTextPackage)
-    io.emit('roundCallText', roundTextPackage);
+    let roundText = roundTextPackage.roundText;
+    let roundTextBoolean = roundTextPackage.roundTextBoolean;
+    io.emit('roundCallText', {roundText, roundTextBoolean});
   })
 
-  socket.on("playerScore", ({ player, scoreP1, scoreP2 }) => {
-    if (player === 'Player-1') {
-      io.emit("player1Score", { scoreP1 })
-      console.log(scoreP1)
+  socket.on("playerScore", (score) => {
+    if (score.player === 'Player-1') {
+      io.emit("player1Score", score.scoreP1)
     }
 
-    if (player === 'Player-2') {
-      io.emit("player2Score", { scoreP2 })
-      console.log(scoreP2)
+    if (score.player === 'Player-2') {
+      io.emit("player2Score", score.scoreP2)
     }
   })
 
