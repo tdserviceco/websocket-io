@@ -68,7 +68,9 @@ io.on('connection', (socket) => {
   })
 
   socket.on("playerScore", (score) => {
+   
     if (score.player === 'Player-1') {
+      console.log(score.scoreP1)
       io.emit("player1Score", score.scoreP1)
     }
 
