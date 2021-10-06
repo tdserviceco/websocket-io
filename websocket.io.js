@@ -1,16 +1,23 @@
 require('dotenv').config()
 const express = require('express');
-const axios = require('axios');
 const app = express();
+const fs = require('fs');
+const path = require('path');
+let rawdata = fs.readFileSync(path.resolve(__dirname, 'flags.json'));
+let flags = JSON.parse(rawdata);
 var cors = require('cors')
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
-  cookie: true
+  cookie: true,
+  cors: {
+    origin: '*'
+  }
 });
 
 
 app.options('*', cors()) // include before other routes
 app.use(cors())
+app.use(express.json())
 
 // API
 
@@ -19,7 +26,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/', (req, res) => {
+
   res.send({ response: 'Yes im still kicking' }).status(200)
+})
+
+app.get('/api/v1/countries', (req, res) => {
+  res.json(flags).status(200)
 })
 
 io.on('connection', (socket) => {
@@ -37,34 +49,20 @@ io.on('connection', (socket) => {
   })
 
   socket.on("player-country", (player) => {
-
+    console.log(player)
     if (player.playerID === 'Player-1') {
-      if (player.country === 'Player-1') {
-        io.emit("player1country", 'Player-1')
-      }
-      else {
-        getCountryFlag(player.country).then(res => {
-          io.emit("player1country", res.data.flag)
-        }).catch(err => console.error(err));
-      }
+      // console.log(player)
+      io.emit("player1country", player.country)
     }
-
     if (player.playerID === 'Player-2') {
-      if (player.country === 'Player-2') {
-        io.emit("player2country", 'Player-2')
-      }
-      else {
-        getCountryFlag(player.country).then(res => {
-          io.emit("player2country", res.data.flag)
-        }).catch(err => console.error(err));
-      }
+      io.emit("player2country", player.country)
     }
   })
 
   socket.on("roundText", (roundTextPackage) => {
     let roundText = roundTextPackage.roundText;
     let roundTextBoolean = roundTextPackage.roundTextBoolean;
-    io.emit('roundCallText', {roundText, roundTextBoolean});
+    io.emit('roundCallText', { roundText, roundTextBoolean });
   })
 
   socket.on("playerScore", (score) => {
@@ -100,9 +98,3 @@ io.on('connection', (socket) => {
 http.listen(process.env.PORT || 3000, () => {
   console.log('server is running on ' + process.env.PORT)
 });
-
-
-getCountryFlag = async (countryCode) => {
-  const url = await axios.get(`https://restcountries.eu/rest/v2/alpha/${countryCode}`);
-  return url;
-}
