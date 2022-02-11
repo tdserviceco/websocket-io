@@ -39,6 +39,18 @@
     {
       "name": "England",
       "code": "gb-eng"
+    },
+    {
+      "name": "Brazil",
+      "code": "br"
+    },
+    {
+      "name": "Japan",
+      "code": "jp"
+    },
+    {
+      "name": "Mexico",
+      "code": "gb-eng"
     }
   ]
 }
