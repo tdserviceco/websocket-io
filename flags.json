@@ -50,7 +50,11 @@
     },
     {
       "name": "Mexico",
-      "code": "gb-eng"
+      "code": "mx"
+    },
+    {
+      "name": "Costa Rica",
+      "code": "cr"
     }
   ]
 }
