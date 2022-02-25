@@ -55,6 +55,10 @@
     {
       "name": "Costa Rica",
       "code": "cr"
+    },
+    {
+      "name": "Philippines",
+      "code": "ph"
     }
   ]
 }
