@@ -47,48 +47,47 @@ io.on('connection', (socket) => {
     io.emit('player-one-name', name)
   });
 
-  //   socket.on('player-two-name', (name) => {
-  //     console.log('name p2:', name);
-  //     io.emit('player-two-name', name)
-  //   });
+  socket.on('player-two-name', (name) => {
+    console.log('name p2:', name);
+    io.emit('player-two-name', name)
+  });
 
-  //   socket.on('player-one-score', (score) => {
-  //     console.log('score p1:', score)
-  //     io.emit('player-one-score', score)
-  //   })
+  socket.on('player-one-score', (score) => {
+    console.log('score p1:', score)
+    io.emit('player-one-score', score)
+  })
 
-  //   socket.on('player-two-score', (score) => {
-  //     console.log('score p2:', score)
-  //     io.emit('player-two-score', score)
+  socket.on('player-two-score', (score) => {
+    console.log('score p2:', score)
+    io.emit('player-two-score', score)
 
-  //   })
+  })
 
-  //   socket.on('players-swap-side', (swap) => {
-  //     console.log('swap:', swap)
-  //     io.emit('players-swap-side', swap)
-  //   })
+  socket.on('players-swap-side', (swap) => {
+    console.log('swap:', swap)
+    io.emit('players-swap-side', swap)
+  })
 
-  //   socket.on('round-announce', (announce) => {
-  //     console.log('announce:', announce)
-  //     io.emit('round-announce', announce)
+  socket.on('round-announce', (announce) => {
+    console.log('announce:', announce)
+    io.emit('round-announce', announce)
 
-  //   })
+  })
 
-  //   socket.on('player-one-country-flag', (flag) => {
-  //     console.log('flag p1:', flag)
-  //     io.emit('player-one-country-flag', flag)
-  //   })
+  socket.on('player-one-country-flag', (flag) => {
+    console.log('flag p1:', flag)
+    io.emit('player-one-country-flag', flag)
+  })
 
-  //   socket.on('player-two-country-flag', (flag) => {
-  //     console.log('flag p2:', flag)
-  //     io.emit('player-two-country-flag', flag)
-  //   })
+  socket.on('player-two-country-flag', (flag) => {
+    console.log('flag p2:', flag)
+    io.emit('player-two-country-flag', flag)
+  })
 
-  //   socket.on('activate-xbox-logo', (choice) => {
-  //     console.log('activate xbox logo:', choice)
-  //     io.emit('activate-xbox-logo', choice)
-  //   })
-
+  socket.on('activate-xbox-logo', (choice) => {
+    console.log('activate xbox logo:', choice)
+    io.emit('activate-xbox-logo', choice)
+  })
 
 });
 
