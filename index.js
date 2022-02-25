@@ -1,12 +1,9 @@
 const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
-const { Server } = require("socket.io");
 const cors = require('cors');
-const io = new Server(http, {
-  cors: {
-    origin: '*'
-  }
+const io = require('socket.io')(http, {
+  cookie: true
 });
 const fs = require('fs');
 const path = require('path');
