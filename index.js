@@ -42,10 +42,10 @@ io.on('connection', (socket) => {
     console.log('user disconnected');
   });
 
-  //   socket.on('player-one-name', (name) => {
-  //     console.log('name p1:', name);
-  //     io.emit('player-one-name', name)
-  //   });
+  socket.on('player-one-name', (name) => {
+    console.log('name p1:', name);
+    io.emit('player-one-name', name)
+  });
 
   //   socket.on('player-two-name', (name) => {
   //     console.log('name p2:', name);
