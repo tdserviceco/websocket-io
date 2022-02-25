@@ -3,7 +3,10 @@ const app = express();
 const http = require('http').createServer(app);
 const cors = require('cors');
 const io = require('socket.io')(http, {
-  cookie: true
+  cookie: true,
+  cors: {
+    origin: "*",
+  }
 });
 const fs = require('fs');
 const path = require('path');
