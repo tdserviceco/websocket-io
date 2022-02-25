@@ -33,14 +33,14 @@ app.get('/api/v1/flags', (req, res) => {
 })
 
 io.on('connection', (socket) => {
-  //   socket.on('disconnect', (reason) => {
-  //     if (reason === 'io server disconnect') {
-  //       // the disconnection was initiated by the server, you need to reconnect manually
-  //       socket.connect();
-  //       console.log('Re-connected')
-  //     }
-  //     console.log('user disconnected');
-  //   });
+  socket.on('disconnect', (reason) => {
+    if (reason === 'io server disconnect') {
+      // the disconnection was initiated by the server, you need to reconnect manually
+      socket.connect();
+      console.log('Re-connected')
+    }
+    console.log('user disconnected');
+  });
 
   //   socket.on('player-one-name', (name) => {
   //     console.log('name p1:', name);
