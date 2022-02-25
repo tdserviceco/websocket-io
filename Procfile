@@ -1,1 +1,1 @@
-web: node websocket.io.js
+web: node index.js
