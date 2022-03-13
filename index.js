@@ -13,14 +13,13 @@ const path = require('path');
 let rawdata = fs.readFileSync(path.resolve(__dirname, 'flags.json'));
 let flags = JSON.parse(rawdata);
 
-
 app.options('*', cors()) // include before other routes
 app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
   res.status(200).json({
-    "statusText": "Helloworld"
+    "statusText": "Hello world"
   })
 })
 
@@ -89,6 +88,10 @@ io.on('connection', (socket) => {
     io.emit('activate-xbox-logo', choice)
   })
 
+  socket.on('layout-skin', (choice) => {
+    console.log('layout-skin:', choice)
+    io.emit('layout-skin', choice)
+  })
 });
 
-http.listen(process.env.PORT || 3000, () => { console.log('listening on *:3000'); });
+http.listen(process.env.PORT || 5100, () => { console.log('listening on *:5100'); });
