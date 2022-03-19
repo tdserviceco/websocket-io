@@ -85,7 +85,10 @@ io.on('connection', (socket) => {
     io.emit('activate-xbox-logo', choice)
   })
 
-
+  socket.on('layout-skin', (choice) => {
+    console.log('layout-skin:', choice)
+    io.emit('layout-skin', choice)
+  })
 });
 
 http.listen(5100, () => { console.log('listening on *:5100'); });
