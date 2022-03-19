@@ -6,7 +6,9 @@ const io = require('socket.io')(http, {
   cookie: true,
   cors: {
     origin: "*",
-  }
+  },
+  pingInterval: 10000,
+  pingTimeout: 5000,
 });
 const fs = require('fs');
 const path = require('path');
