@@ -6,9 +6,7 @@ const cors = require('cors');
 const io = new Server(http, {
   cors: {
     origin: '*'
-  },
-  pingInterval: 10000,
-  pingTimeout: 5000,
+  }
 });
 const fs = require('fs');
 const path = require('path');
