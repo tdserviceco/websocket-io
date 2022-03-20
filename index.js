@@ -4,7 +4,7 @@ const http = require('http').createServer(app);
 const cors = require('cors');
 const io = require('socket.io')(http, {
   cors: {
-    origin: ["https://scorehandler.netlify.app", "https://scorehandler.netlify.app/dashboard"],
+    origin: "*",
   }
 });
 const fs = require('fs');
