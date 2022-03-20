@@ -32,9 +32,12 @@ app.get('/api/v1/flags', (req, res) => {
 
 io.on('connection', (socket) => {
   socket.on('disconnect', (reason) => {
-    console.log(reason)
+    if (reason === "ping timeout") {
+      io.emit('ping timeout', 'Server crashed cause you inputed to many time... server refresh once you hit ok');
+      console.log('user ping timeout... restarting');
+
+    }
     // the disconnection was initiated by the server, you need to reconnect manually
-    console.log('user disconnected');
   });
 
   socket.on('player-one-name', (name) => {
