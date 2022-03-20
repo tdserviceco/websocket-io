@@ -32,11 +32,8 @@ app.get('/api/v1/flags', (req, res) => {
 
 io.on('connection', (socket) => {
   socket.on('disconnect', (reason) => {
-
+    console.log(reason)
     // the disconnection was initiated by the server, you need to reconnect manually
-    socket.connect();
-    console.log('Re-connected')
-
     console.log('user disconnected');
   });
 
