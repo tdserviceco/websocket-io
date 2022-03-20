@@ -35,7 +35,7 @@ app.get('/api/v1/flags', (req, res) => {
 
 io.on('connection', (socket) => {
   socket.on('disconnect', (reason) => {
-    if (reason === 'io server disconnect') {
+    if (reason === 'ping timeout') {
       // the disconnection was initiated by the server, you need to reconnect manually
       socket.connect();
       console.log('Re-connected')
