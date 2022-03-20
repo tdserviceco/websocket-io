@@ -3,6 +3,7 @@ const app = express();
 const http = require('http').createServer(app);
 const cors = require('cors');
 const io = require('socket.io')(http, {
+  forceNew: true,
   cors: {
     origin: "*",
   }
@@ -35,6 +36,7 @@ io.on('connection', (socket) => {
     if (reason === "ping timeout") {
       io.emit('ping timeout', 'Server crashed cause you inputed to many time... server refresh once you hit ok');
       console.log('user ping timeout... restarting');
+      socket.connect();
 
     }
     // the disconnection was initiated by the server, you need to reconnect manually
