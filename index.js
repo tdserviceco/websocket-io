@@ -95,4 +95,4 @@ io.on('connection', (socket) => {
   })
 });
 
-http.listen(process.env.PORT || 5100, () => { console.log('listening on *:5100'); });
+http.listen(process.env.PORT || port, () => { console.log(`listening on *:${process.env.PORT || port}`); });
