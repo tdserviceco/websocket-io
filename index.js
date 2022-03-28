@@ -5,7 +5,7 @@ const cors = require('cors');
 const io = require('socket.io')(http, {
   forceNew: true,
   cors: {
-    origin: "*",
+    origin: ["http://localhost:3000", "http://localhost:3000/dashboard", "https://scorehandler.netlify.app", "https://scorehandler.netlify.app/dashboard"],
   }
 });
 const fs = require('fs');
@@ -23,9 +23,6 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/api/', (req, res) => {
-  res.send({ response: 'Yes im still kicking' }).status(200)
-})
 
 app.get('/api/v1/flags', (req, res) => {
   res.json(flags).status(200)
