@@ -3,7 +3,6 @@ const app = express();
 const http = require('http').createServer(app);
 const cors = require('cors');
 const io = require('socket.io')(http, {
-  forceNew: true,
   cors: {
     origin: "*",
   }
@@ -29,10 +28,6 @@ app.get('/api/v1/flags', (req, res) => {
 })
 
 io.on('connection', (socket) => {
-  socket.on('disconnect', (reason) => {
-    console.log('disconnected')
-    // the disconnection was initiated by the server, you need to reconnect manually
-  });
 
   socket.on('player-one-name', (name) => {
     console.log('name p1:', name);
